@@ -2,6 +2,8 @@
 
 <p align="center">
 A fun Chrome extension that lets balloons rise on your screen
+  **COMING SOON**
+  -Leaderboards
 </p>
 
 <div align="center">

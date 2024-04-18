@@ -1,4 +1,4 @@
-import { Message } from './const';
+import { Message } from '@const';
 import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
@@ -18,8 +18,22 @@ export function generateRandomNumber(min: number, max: number) {
   return Math.random() * (max - min) + min;
 }
 
+export function sleep(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 export function sendMessage(message: Message) {
   try {
-    chrome.runtime.sendMessage(message);
+    chrome.runtime.sendMessage(message, (res) => {
+      if (chrome.runtime.lastError) {
+        console.log(
+          'Error sending message:',
+          message,
+          '\nError message:',
+          chrome.runtime.lastError
+        );
+        chrome.runtime.lastError = undefined;
+      }
+    });
   } catch (e) {}
 }

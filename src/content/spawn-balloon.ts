@@ -8,6 +8,7 @@ import {
   isFullScreenVideoPlaying,
   weightedRandom,
 } from '@/utils';
+import { isChristmasSeason } from '@/utils/christmas-season';
 
 (async () => {
   // Prevent running in popup
@@ -28,7 +29,9 @@ import {
   // Add the balloon container to the document
   const _ = getBalloonContainer();
 
-  const balloonClasses = Object.values(balloons);
+  const balloonClasses = Object.values(balloons).filter(
+    (BalloonType) => BalloonType !== balloons.Santa || isChristmasSeason()
+  );
   // Make a list from the spawn_chance from each balloon class
   const spawnChances =
     process.env.NODE_ENV === 'development'

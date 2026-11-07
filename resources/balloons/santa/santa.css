@@ -1,0 +1,32 @@
+.santa-snow {
+  position: fixed;
+  z-index: 10000;
+  pointer-events: none;
+}
+
+.santa-snowflake {
+  position: absolute;
+  display: block;
+  width: var(--snow-size);
+  height: var(--snow-size);
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0;
+  box-shadow: 0 0 3px rgb(255 255 255 / 70%);
+  animation: santa-snow-fall var(--snow-duration) ease-out var(--snow-delay) forwards;
+}
+
+@keyframes santa-snow-fall {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) rotate(0);
+  }
+  12% {
+    opacity: 0.95;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--snow-drift), var(--snow-fall), 0)
+      rotate(var(--snow-rotation));
+  }
+}

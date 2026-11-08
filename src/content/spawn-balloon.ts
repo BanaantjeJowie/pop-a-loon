@@ -29,14 +29,17 @@ import { isChristmasSeason } from '@/utils/christmas-season';
   // Add the balloon container to the document
   const _ = getBalloonContainer();
 
-  const balloonClasses = Object.values(balloons).filter(
-    (BalloonType) => BalloonType !== balloons.Santa || isChristmasSeason()
+  const santaAvailable =
+    process.env.NODE_ENV === 'development' || isChristmasSeason();
+  const balloonClasses = Object.values(balloons).filter((BalloonType) =>
+    santaAvailable
+      ? BalloonType !== balloons.Default
+      : BalloonType !== balloons.Santa
   );
   // Make a list from the spawn_chance from each balloon class
-  const spawnChances =
-    process.env.NODE_ENV === 'development'
-      ? new Array(balloonClasses.length).fill(1)
-      : balloonClasses.map((BalloonType) => BalloonType.spawn_chance);
+  const spawnChances = balloonClasses.map(
+    (BalloonType) => BalloonType.spawn_chance
+  );
 
   // Create a new balloon and make it rise
   const Balloon = weightedRandom(balloonClasses, spawnChances, {

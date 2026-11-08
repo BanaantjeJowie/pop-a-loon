@@ -6,6 +6,6 @@ describe('Santa Balloon', () => {
 
     expect(balloon.name).toBe('santa');
     expect(balloon.balloonImageUrl).toContain('/santa/balloon.svg');
-    expect(balloon.popSoundUrl).toContain('/santa/pop.mp3');
+    expect(balloon.popSoundUrl).toContain('/santa/santa pop.mp3');
   });
 });

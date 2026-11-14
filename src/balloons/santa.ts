@@ -7,7 +7,7 @@ const SNOWFLAKE_SVG =
   '<svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><path d="M12 2v20M3.34 7l17.32 10M3.34 17l17.32-10M12 2 9.5 5M12 2l2.5 3m-2.5 14-2.5-3m2.5 3 2.5-3M3.34 7l4 .2M3.34 7l1.5 3.6m13.82 2.6 1.5 3.6m-1.5-3.6 4-.2M3.34 17l4-.2m-4 .2 1.5-3.6m13.82-2.6 1.5-3.6m-1.5 3.6 4 .2"/></g></svg>';
 
 export default class Santa extends Default {
-  public static readonly spawn_chance: number = Default.spawn_chance;
+  public static readonly spawn_chance: number = Default.spawn_chance * 1.1;
 
   // @ts-ignore
   public get name(): 'santa' {

@@ -31,10 +31,8 @@ import { isChristmasSeason } from '@/utils/christmas-season';
 
   const santaAvailable =
     process.env.NODE_ENV === 'development' || isChristmasSeason();
-  const balloonClasses = Object.values(balloons).filter((BalloonType) =>
-    santaAvailable
-      ? BalloonType !== balloons.Default
-      : BalloonType !== balloons.Santa
+  const balloonClasses = Object.values(balloons).filter(
+    (BalloonType) => BalloonType !== balloons.Santa || santaAvailable
   );
   // Make a list from the spawn_chance from each balloon class
   const spawnChances = balloonClasses.map(

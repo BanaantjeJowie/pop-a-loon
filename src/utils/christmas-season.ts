@@ -1,8 +1,6 @@
 /** Check whether a month and day fall within the Christmas season. */
 export function isChristmasSeasonDate(month: number, day: number): boolean {
-  return (
-    (month === 11 && day >= 15) || month === 12 || (month === 1 && day <= 15)
-  );
+  return (month === 11 && day >= 15) || (month === 12 && day <= 30);
 }
 
 /** Check the current date using the Europe/Brussels calendar date. */

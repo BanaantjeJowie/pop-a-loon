@@ -8,10 +8,9 @@ describe('isChristmasSeasonDate', () => {
     [11, 30, true],
     [12, 1, true],
     [12, 25, true],
-    [12, 31, true],
-    [1, 1, true],
-    [1, 15, true],
-    [1, 16, false],
+    [12, 30, true],
+    [12, 31, false],
+    [1, 1, false],
     [2, 1, false],
     [10, 31, false],
   ])('returns %s for month %s, day %s', (month, day, expected) => {
